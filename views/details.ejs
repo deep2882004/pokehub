@@ -1,0 +1,70 @@
+<%- include("partials/header.ejs") %>
+<div class="detailsbg">
+<div class="details-content">
+   <div class="left-image type-<%= pokemon.types[0] %>">
+    <img src="<%= pokemon.image %>" alt="">
+   </div>
+   <div class="right-details">
+      <div class="idandname">
+      <p>#<%= pokemon.id %></p>
+      <h1><%= pokemon.name %></h1>
+   </div>
+      <div class="types">
+         <% for( let i = 0;i<pokemon.types.length;i++){ %>
+           <p class="type-bg-<%= pokemon.types[i] %>"><%= pokemon.types[i] %></p>
+      <%  } %> 
+      </div>
+      <div class="discription-info">
+         <p><%= description %></p>
+      </div>
+      <div class="info-about">
+         <div class="heightinfo">
+            <p class="forcolorinfo" >HEIGHT</p>
+            <p class="forborderandpa type-text-<%= pokemon.types[0] %>"><%= pokemon.height %> dm</p>
+         </div>
+         <div class="weightinfo">
+            <p class="forcolorinfo">WEIGHT</p>
+            <p class="forborderandpa type-text-<%= pokemon.types[0] %>"><%= pokemon.weight %> hg</p>
+         </div>
+         <div class="speciesinfo">
+            <p class="forcolorinfo">SPECIES</p>
+            <p class="forborderandpa type-text-<%= pokemon.types[0] %>"><%= species %></p>
+         </div>
+         <div class="habitatinfo">
+            <p class="forcolorinfo">HABITAT</p>
+            <p class="forborderandpa type-text-<%= pokemon.types[0] %>"><%= habitat %></p>
+         </div>
+      </div>
+
+      <div class="stats">
+         <h1>Base stats</h1>
+         <div class="fullstatuscon">
+         <div class="labelcontainer">
+        <% for(let i = 0 ; i < pokemon.stats.length;i++){ %>
+           <p class="type-text-status-<%= pokemon.types[0] %>"><%= pokemon.stats[i].name.toUpperCase() %></p>
+         <% } %> </div>
+        <div class="line"></div>
+        <div class="valuecontainer">
+         <% for(let i = 0 ; i < pokemon.stats.length; i++){ %>
+           <div class="stat-row">
+             <div class="stat-value type-text-status-<%= pokemon.types[0] %>"><%= pokemon.stats[i].value %></div>
+             <div class="stat-bar">
+               <div class="stat-fill type-bg-<%= pokemon.types[0] %>" 
+                    style="width: <%= (pokemon.stats[i].value / 255) * 100 %>%;">
+               </div>
+             </div>
+           </div>
+         <% } %>
+       </div>
+         </div>
+      </div>
+      </div>
+   
+    
+   </div>
+</div>
+<%- include("partials/footer.ejs") %>
+</div>
+
+
+

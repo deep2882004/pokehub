@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeHub</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="/images/logo.png" alt="" />
+        <p>POKEHUB</p>
+      </div>
+      <div class="nav-links">
+        <p class="ximage"><img src="/images/xmark-solid.svg" alt="" /></p>
+        <p>
+          <a href="/" class="<%= page === 'home' ? 'active-link' : '' %>"
+            >Home</a
+          >
+        </p>
+        <p>
+          <a
+            href="/explore"
+            class="<%= page === 'pokedex' ? 'active-link' : '' %>"
+            >Pokédex</a
+          >
+        </p>
+      </div>
+      <div class="menu-btn"><img src="/images/menu-btn.svg" alt="" /></div>
+    </nav>
+  </body>
+</html>

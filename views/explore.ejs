@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+<div class="explorebg">
+  <form action="/search" method="GET" class="inputbox">
+    <input type="text" name="q" placeholder="Enter pokemon name or id" />
+    <button type="submit"><img src="images/search.svg" alt="" /></button>
+  </form>
+
+  <% if (noPokemon) { %>
+  <div class="no-pokemon">
+    <img src="images/pikachu.png" alt="" />
+    <p>No Pokémon found! 😢 Try searching for a valid Pokémon name or ID.</p>
+  </div>
+  <% } else { %>
+  <div class="poke-cards">
+    <% for(let i = 0; i < pokemonlist.length; i++){ %>
+    <div class="poke-card">
+      <p class="poke-id">#<%= pokemonlist[i].id %></p>
+      <a href="/pokemon/<%= pokemonlist[i].id %>">
+        <img
+          src="<%= pokemonlist[i].image %>"
+          alt="<%= pokemonlist[i].name %>"
+        />
+      </a>
+      <p class="poke-name"><%= pokemonlist[i].name %></p>
+    </div>
+    <% } %>
+  </div>
+  <% } %> <% if (pokemonlist.length === 16) { %>
+  <div class="handlebuttons">
+    <% if (offset > 0) { %>
+    <a href="/explore?offset=<%= offset - 16 %>">
+      <button>Previous</button>
+    </a>
+    <% } %>
+    <a href="/explore?offset=<%= offset + 16 %>">
+      <button>Next</button>
+    </a>
+  </div>
+  <% } %>
+</div>
+
+<%- include('partials/footer.ejs') %>
