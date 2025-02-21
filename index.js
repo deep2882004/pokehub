@@ -112,18 +112,19 @@ try {
     } 
    
     else if (query.length === 1 && /^[a-z]$/.test(query)) {
-        const allPokemon = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1302"); 
+        const allPokemon = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1000"); 
         const filtered = allPokemon.data.results.filter(p => p.name.startsWith(query));
-
-        for (const p of filtered) {
-            const pokeDetails = await axios.get(p.url);
-            pokemonList.push({
-                id: pokeDetails.data.id,
-                name: pokeDetails.data.name,
-                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeDetails.data.id}.png`,
-            });
-        }
-    } 
+    
+        pokemonList = filtered.map(p => {
+            const id = p.url.split("/").slice(-2, -1)[0]; // 
+            return {
+                id: id,
+                name: p.name,
+                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+            };
+        });
+    }
+    
     else {
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`);
         const id = response.data.id;
