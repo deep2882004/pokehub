@@ -10,3 +10,16 @@ menuBtn.addEventListener("click", () => {
 ximage.addEventListener("click", () => {
   navLinks.classList.remove("show");
 });
+
+const lenis = new Lenis({
+  smooth: true,
+  duration: 1.1
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
